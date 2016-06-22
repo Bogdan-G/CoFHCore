@@ -87,7 +87,7 @@ public class CoFHFontRenderer extends FontRenderer {
 		return Arrays.asList(this.wrapFormattedStringToWidth(par1Str, par2).split("\n"));
 	}
 
-	@Override
+	/*@*//*Override*/
 	public String wrapFormattedStringToWidth(String par1Str, int par2) {
 
 		int j = this.sizeStringToWidth(par1Str, par2);

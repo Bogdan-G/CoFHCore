@@ -102,7 +102,7 @@ public class Mapping {
 					out.append('L');
 					char o = ';';
 					int end = type.indexOf(';', pos);
-					if ((l > 0) & end > l) {
+					if ((l > 0) && end > l) {
 						end = l;
 						o = '<';
 						l = type.indexOf('<', l + 1);

@@ -113,9 +113,11 @@ public class UVTransformationList extends UVTransformation {
 	public String toString() {
 
 		String s = "";
+		StringBuilder sSB = new StringBuilder(s);
 		for (UVTransformation t : transformations) {
-			s += "\n" + t.toString();
+			sSB.append("\n").append(t.toString());
 		}
+		s = String.valueOf(sSB);
 		return s.trim();
 	}
 }

@@ -1090,7 +1090,7 @@ class ASMCore {
 					for (int i = 0, e = m.instructions.size(); i < e; ++i) {
 						AbstractInsnNode n = m.instructions.get(i);
 						if (n.getOpcode() == LXOR) {
-							m.instructions.insertBefore(n, new LdcInsnNode(new Long(13L)));
+							m.instructions.insertBefore(n, new LdcInsnNode(13L));
 							m.instructions.insertBefore(n, new InsnNode(LMUL));
 							break;
 						}

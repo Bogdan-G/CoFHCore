@@ -74,12 +74,13 @@ public class CommandKillAll implements ISubCommand {
 		}
 		if (killCount > 0) {
 			String finalNames = "";
+			StringBuilder finalNamesSB = new StringBuilder(finalNames);
 			TObjectIntIterator<String> it = names.iterator();
 			while (it.hasNext()) {
 				it.advance();
-				finalNames = finalNames + StringHelper.LIGHT_RED + it.value() + StringHelper.WHITE + "x" + StringHelper.YELLOW + it.key() + StringHelper.WHITE
-						+ ", ";
+				finalNamesSB.append(StringHelper.LIGHT_RED).append(it.value()).append(StringHelper.WHITE).append('x').append(StringHelper.YELLOW).append(it.key()).append(StringHelper.WHITE).append(", ");
 			}
+			finalNames = String.valueOf(finalNamesSB);
 			finalNames = finalNames.substring(0, finalNames.length() - 2);
 			CommandHandler.logAdminCommand(sender, this, "info.cofh.command.killall.success" + (target != null ? "" : "Hostile"), killCount, finalNames);
 		} else {

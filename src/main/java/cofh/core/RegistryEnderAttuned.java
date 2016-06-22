@@ -23,7 +23,7 @@ public class RegistryEnderAttuned {
 	static EnderRegistry registry;
 	static ServerEnderChannelRegistry serverChannels;
 	static ClientEnderChannelRegistry clientChannels;
-	final static String dummy = new String();
+	final static String dummy = "";
 
 	public static void initialize() {
 

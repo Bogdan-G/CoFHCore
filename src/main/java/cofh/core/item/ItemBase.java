@@ -28,7 +28,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemBase extends Item {
 
-	public class ItemEntry {
+	public static class ItemEntry {
 
 		public String name;
 		public IIcon icon;

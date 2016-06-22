@@ -263,7 +263,7 @@ public class WorldHandler implements IWorldGenerator, IFeatureHandler {
 
 		replaceBedrock(random, chunkX, chunkZ, world, newGen | forceFullRegeneration);
 
-		if (!newGen & !retroGeneration) {
+		if (!newGen && !retroGeneration) {
 			return;
 		}
 		for (IFeatureGenerator feature : features) {
@@ -284,7 +284,7 @@ public class WorldHandler implements IWorldGenerator, IFeatureHandler {
 
 		replaceBedrock(random, chunkX, chunkZ, world, newGen | forceFullRegeneration);
 
-		if (!newGen & !retroGeneration) {
+		if (!newGen && !retroGeneration) {
 			return;
 		}
 		THashSet<String> genned = chunk.generatedFeatures;
@@ -301,7 +301,7 @@ public class WorldHandler implements IWorldGenerator, IFeatureHandler {
 
 	public void replaceBedrock(Random random, int chunkX, int chunkZ, World world, boolean newGen) {
 
-		if (!genFlatBedrock | !newGen & !retroFlatBedrock) {
+		if (!genFlatBedrock || !newGen && !retroFlatBedrock) {
 			return;
 		}
 		int offsetX = chunkX * 16;

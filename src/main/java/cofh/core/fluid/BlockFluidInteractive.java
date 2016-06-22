@@ -40,11 +40,11 @@ public class BlockFluidInteractive extends BlockFluidCoFHBase implements IBakeab
 		if (preBlock == null || postBlock == null || postMeta < 0) {
 			return false;
 		}
-		if (preMeta < 0) {
+		//if (preMeta < 0) {
 			collisionMap.put(new BlockWrapper(preBlock, preMeta), new BlockWrapper(postBlock, postMeta));
-		} else {
-			collisionMap.put(new BlockWrapper(preBlock, preMeta), new BlockWrapper(postBlock, postMeta));
-		}
+		//} else {
+			//collisionMap.put(new BlockWrapper(preBlock, preMeta), new BlockWrapper(postBlock, postMeta));
+		//}
 		return true;
 	}
 

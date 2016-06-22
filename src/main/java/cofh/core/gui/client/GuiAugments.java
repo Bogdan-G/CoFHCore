@@ -11,6 +11,7 @@ public class GuiAugments extends GuiBaseAdv {
 
 	public static final ResourceLocation TEXTURE = new ResourceLocation(GuiProps.PATH_GUI + "Augments.png");
 
+	/*@*//*Override*/
 	public GuiAugments(InventoryPlayer inventory) {
 
 		super(new ContainerAugments(inventory), TEXTURE);

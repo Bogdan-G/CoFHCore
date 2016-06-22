@@ -137,6 +137,9 @@ public class GuiFriendsList extends GuiBaseAdv {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.minecraft.client.gui.inventory.GuiContainer#drawGuiContainerBackgroundLayer(float, int, int)
+	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {
 

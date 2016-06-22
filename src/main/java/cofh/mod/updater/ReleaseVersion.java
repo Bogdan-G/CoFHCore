@@ -100,7 +100,7 @@ public class ReleaseVersion implements ArtifactVersion {
 
 	public boolean isStable() {
 
-		return _rc == 0 & _beta == 0;
+		return _rc == 0 && _beta == 0;
 	}
 
 	public boolean isRC() {
