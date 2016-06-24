@@ -229,9 +229,9 @@ public class ProxyClient extends Proxy {
 			return KEYBINDING_EMPOWER.getKeyCode();
 		} else if (key.equalsIgnoreCase("cofh.multimode")) {
 			return KEYBINDING_MULTIMODE.getKeyCode();
-		} else if (key.equalsIgnoreCase("cofh.augment")) {
+		}// else if (key.equalsIgnoreCase("cofh.augment")) {
 			//return KEYBINDING_AUGMENTS.getKeyCode();
-		}
+		//}
 		return -1;
 	}
 

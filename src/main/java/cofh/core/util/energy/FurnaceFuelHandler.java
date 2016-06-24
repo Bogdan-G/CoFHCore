@@ -12,9 +12,9 @@ import net.minecraft.item.ItemStack;
 
 public class FurnaceFuelHandler implements IFuelHandler {
 
-	public static FurnaceFuelHandler instance = new FurnaceFuelHandler();
-
 	private static THashMap<ItemWrapper, Integer> fuels = new THashMap<ItemWrapper, Integer>();
+
+	public static FurnaceFuelHandler instance = new FurnaceFuelHandler();
 
 	public static void initialize() {
 

@@ -38,6 +38,7 @@ public class FontUtils {
 					postfix = prefixes[p];
 				}
 				quantity = Integer.toString(q) + postfix;
+				break;//FB: Dead store due to switch statement fall through
 			case 1:
 				quantity = "";
 				if (item.stackSize / 64 > 0) {

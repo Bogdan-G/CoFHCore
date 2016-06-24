@@ -477,7 +477,7 @@ public final class EnderRegistry {
 		@Override
 		public boolean equals(Object o) {
 
-			if (o == null || o.getClass() != EnderDestination.class) {
+			if (o == null || o.getClass() != EnderDestination.class.getClass()) {
 				return false;
 			}
 			EnderDestination other = (EnderDestination) o;

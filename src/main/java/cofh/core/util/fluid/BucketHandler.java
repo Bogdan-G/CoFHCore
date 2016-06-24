@@ -27,13 +27,13 @@ import net.minecraftforge.fluids.IFluidBlock;
 
 public class BucketHandler {
 
+	private static BiMap<BlockWrapper, ItemWrapper> buckets = HashBiMap.create();
+
 	public static BucketHandler instance = new BucketHandler();
 
 	public static void initialize() {
 
 	}
-
-	private static BiMap<BlockWrapper, ItemWrapper> buckets = HashBiMap.create();
 
 	private BucketHandler() {
 

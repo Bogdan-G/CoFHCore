@@ -160,7 +160,7 @@ public abstract class ContainerInventoryItem extends ContainerBase {
 
 			if ((modifier == 0 || modifier == 1) && (mouseButton == 0 || mouseButton == 1)) {
 				if (slotIndex == -999) {
-					if (inventoryPlayer.getItemStack() != null && slotIndex == -999) {
+					if (inventoryPlayer.getItemStack() != null) {
 						if (mouseButton == 0) {
 							player.dropPlayerItemWithRandomChoice(inventoryPlayer.getItemStack(), true);
 							inventoryPlayer.setItemStack((ItemStack) null);

@@ -77,7 +77,7 @@ public class ChatHelper {
 
 	public static void sendIndexedChatMessageToPlayer(EntityPlayer player, IChatComponent message) {
 
-		if (player.worldObj == null || player instanceof FakePlayer) {
+		if (player.worldObj == null/* || player instanceof FakePlayer*/) {
 			return;
 		}
 
@@ -95,7 +95,7 @@ public class ChatHelper {
 
 	public static void sendIndexedChatMessagesToPlayer(EntityPlayer player, List<IChatComponent> messages) {
 
-		if (player.worldObj == null || player instanceof FakePlayer) {
+		if (player.worldObj == null/* || player instanceof FakePlayer*/) {
 			return;
 		}
 

@@ -12,7 +12,7 @@ import java.util.TreeMap;
 
 public abstract class ConfigTagParent {
 
-	public static class TagOrderComparator implements Comparator<ConfigTag> {
+	public static class TagOrderComparator implements Comparator<ConfigTag>, java.io.Serializable {
 
 		int sortMode;
 

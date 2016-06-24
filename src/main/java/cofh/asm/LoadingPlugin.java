@@ -107,25 +107,26 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
 				}
 			});
 			JOptionPane.showMessageDialog(null, ep, "Fatal error", JOptionPane.ERROR_MESSAGE);
-			System.exit(1);
+			//System.exit(1);//lel
 		}
-		l: if (obfuscated && System.getProperty("java.specification.version").compareTo("1.8") < 0) {
+		//heh, nope
+		/*l: if (obfuscated && System.getProperty("java.specification.version").compareTo("1.8") < 0) {*/
 			// create always-on-top modal dialogue in a separate thread so initialization can continue (but the user has to respond anyway)
-			if (FMLLaunchHandler.side() == Side.SERVER) {
-				FMLLog.log(Level.WARN, "*************************************************************************");
-				for (int i = 0; i < 5; ++i) {
-					FMLLog.log(Level.WARN, "*************************************************************************");
-					FMLLog.log(Level.WARN, "* You are using an old Java version, and should update to 1.8 or newer. *");
-					FMLLog.log(Level.WARN, "*************************************************************************");
-				}
-				FMLLog.log(Level.WARN, "*************************************************************************");
-				try {
+			/*if (FMLLaunchHandler.side() == Side.SERVER) {*/
+				//FMLLog.log(Level.WARN, "*************************************************************************");
+				//for (int i = 0; i < 5; ++i) {
+					//FMLLog.log(Level.WARN, "*************************************************************************");
+					//FMLLog.log(Level.WARN, "* You are using an old Java version, and should update to 1.8 or newer. *");
+					//FMLLog.log(Level.WARN, "*************************************************************************");
+				//}
+				//FMLLog.log(Level.WARN, "*************************************************************************");
+				/*try {
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 				}
 				break l;
-			}
-			new Thread(new Runnable() {
+			}*/
+			/*new Thread(new Runnable() {
 
 				@Override
 				public void run() {
@@ -148,7 +149,7 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
 				}
 
 			}, "Message Thread").start();
-		}
+		}*/
 	}
 
 	// public LoadingPlugin() {

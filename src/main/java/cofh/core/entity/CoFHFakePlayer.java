@@ -92,9 +92,9 @@ public class CoFHFakePlayer extends FakePlayer {
 		previousItem = itemstack1 == null ? null : itemstack1.copy();
 		theItemInWorldManager.updateBlockRemoving();
 
-		if (itemInUse != null) {
+		//if (itemInUse != null) {
 			// tickItemInUse(itemstack);
-		}
+		//}
 	}
 
 	public void tickItemInUse(ItemStack updateItem) {
