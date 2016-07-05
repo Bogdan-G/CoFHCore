@@ -524,7 +524,7 @@ public class WorldGenMassiveTree extends WorldGenerator {
 	}
 
 	@Override
-	public synchronized boolean generate(World world, Random par2Random, int x, int y, int z) {
+	public /*synchronized */boolean generate(World world, Random par2Random, int x, int y, int z) {
 
 		// long time = System.nanoTime();
 		worldObj = world;

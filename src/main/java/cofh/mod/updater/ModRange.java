@@ -107,7 +107,7 @@ public class ModRange {
 				upperVersion = getArtifactVersion(label, upperBound);
 			}
 
-			if (upperVersion != null & lowerVersion != null && upperVersion.compareTo(lowerVersion) < 0) {
+			if (upperVersion != null && lowerVersion != null && upperVersion.compareTo(lowerVersion) < 0) {
 				throw new InvalidVersionSpecificationException("Range defies version ordering: " + spec);
 			}
 

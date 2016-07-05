@@ -1671,9 +1671,9 @@ class ASMCore {
 	private static String[] getExceptions(Method m) {
 
 		Class<?>[] d = m.getExceptionTypes();
-		if (d == null) {
+		/*if (d == null) {
 			return null;
-		}
+		}*/
 		String[] r = new String[d.length];
 		for (int i = 0; i < d.length; ++i) {
 			r[i] = Type.getInternalName(d[i]);
@@ -1975,7 +1975,7 @@ class ASMCore {
 						}
 						info.values = ((List<?>) v).toArray(emptyList);
 					} else if ("side".equals(k) && v instanceof String) {
-						info.side = ((String) v).toUpperCase().intern();
+						info.side = ((String) v).toUpperCase(java.util.Locale.ENGLISH).intern();
 					} else if ("method".equals(k) && v instanceof String) {
 						info.method = (String) v;
 					}

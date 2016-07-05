@@ -263,7 +263,7 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
 		private void scanMod(File file) {
 
 			{
-				String name = file.getName().toLowerCase();
+				String name = file.getName().toLowerCase(java.util.Locale.ENGLISH);
 				if (file.isDirectory() || !name.endsWith(".jar") && !name.endsWith(".zip")) {
 					return;
 				}

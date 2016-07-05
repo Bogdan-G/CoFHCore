@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
-@SuppressWarnings("unchecked")
+//@//SuppressWarnings("unchecked")
 public class LinkedHashList<E extends Object> extends AbstractCollection<E> implements List<E>, Cloneable, java.io.Serializable {
 
 	private static final long serialVersionUID = -642033533165934945L;
@@ -77,7 +77,7 @@ public class LinkedHashList<E extends Object> extends AbstractCollection<E> impl
 		return size;
 	}
 
-	protected synchronized boolean add(E obj, int hash) {
+	protected /*synchronized */boolean add(E obj, int hash) {
 
 		if (seek(obj, hash) != null) {
 			return false;
@@ -125,7 +125,7 @@ public class LinkedHashList<E extends Object> extends AbstractCollection<E> impl
 	}
 
 	@Override
-	public synchronized void add(int index, E obj) {
+	public /*synchronized */void add(int index, E obj) {
 
 		checkPositionIndex(index);
 
@@ -301,7 +301,7 @@ public class LinkedHashList<E extends Object> extends AbstractCollection<E> impl
 		++size;
 	}
 
-	protected synchronized boolean linkBefore(E obj, Entry succ) {
+	protected /*synchronized */boolean linkBefore(E obj, Entry succ) {
 
 		int hash = hash(obj);
 		if (seek(obj, hash) != null) {
@@ -344,7 +344,7 @@ public class LinkedHashList<E extends Object> extends AbstractCollection<E> impl
 		--size;
 	}
 
-	protected synchronized E unlink(Entry x) {
+	protected /*synchronized */E unlink(Entry x) {
 
 		modCount++;
 		final E element = (E) x.key;
@@ -373,7 +373,7 @@ public class LinkedHashList<E extends Object> extends AbstractCollection<E> impl
 
 		Entry[] old = hashTable, newTable;
 		if (size > old.length * 2 && old.length < Ints.MAX_POWER_OF_TWO) {
-			synchronized (hashTable) {
+			//synchronized (hashTable) {
 				int newTableSize = old.length * 2, newMask = newTableSize - 1;
 				newTable = new Entry[newTableSize];
 
@@ -389,7 +389,7 @@ public class LinkedHashList<E extends Object> extends AbstractCollection<E> impl
 				}
 				hashTable = newTable;
 				mask = newMask;
-			}
+			//}
 		}
 	}
 

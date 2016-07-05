@@ -521,7 +521,7 @@ public final class ItemHelper {
 
 	public static boolean addGearRecipe(ItemStack gear, ItemStack ingot, ItemStack center) {
 
-		if (gear == null || ingot == null | center == null) {
+		if (gear == null || ingot == null || center == null) {
 			return false;
 		}
 		GameRegistry.addRecipe(cloneStack(gear), " X ", "XIX", " X ", 'X', cloneStack(ingot, 1), 'I', cloneStack(center, 1));
@@ -558,7 +558,7 @@ public final class ItemHelper {
 
 	public static boolean addRotatedGearRecipe(ItemStack gear, ItemStack ingot, ItemStack center) {
 
-		if (gear == null || ingot == null | center == null) {
+		if (gear == null || ingot == null || center == null) {
 			return false;
 		}
 		GameRegistry.addRecipe(cloneStack(gear), "X X", " I ", "X X", 'X', cloneStack(ingot, 1), 'I', cloneStack(center, 1));
@@ -570,7 +570,7 @@ public final class ItemHelper {
 	// SURROUND{
 	public static boolean addSurroundRecipe(ItemStack out, ItemStack one, ItemStack eight) {
 
-		if (out == null || one == null | eight == null) {
+		if (out == null || one == null || eight == null) {
 			return false;
 		}
 		GameRegistry.addRecipe(cloneStack(out), "XXX", "XIX", "XXX", 'X', cloneStack(eight, 1), 'I', cloneStack(one, 1));

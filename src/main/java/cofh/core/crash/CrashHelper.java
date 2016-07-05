@@ -166,7 +166,7 @@ public class CrashHelper {
 						name = name.substring(i + 1, name.length());
 					}
 
-					String t = name.substring(0, 1).toUpperCase();
+					String t = name.substring(0, 1).toUpperCase(java.util.Locale.ENGLISH);
 					if (!map.containsValue(t)) {
 						map.put(block, t);
 						return t;

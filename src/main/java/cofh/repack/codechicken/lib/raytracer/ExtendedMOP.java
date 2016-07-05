@@ -45,7 +45,7 @@ public class ExtendedMOP extends MovingObjectPosition implements Comparable<Exte
 		this.data = data;
 	}
 
-	@SuppressWarnings("unchecked")
+	//@//SuppressWarnings("unchecked")
 	public static <T> T getData(MovingObjectPosition mop) {
 
 		if (mop instanceof ExtendedMOP) {

@@ -101,7 +101,7 @@ public class CommandHand implements ISubCommand {
 			list.add(InfoType.Name);
 		} else
 			for (; i < l; ++i) {
-				InfoType type = infoMap.get(args[i].toLowerCase());
+				InfoType type = infoMap.get(args[i].toLowerCase(java.util.Locale.ENGLISH));
 				if (type == null) {
 					sender.addChatMessage(new ChatComponentTranslation("info.cofh.command.syntaxError"));
 					throw new WrongUsageException("info.cofh.command." + getCommandName() + ".syntax");
@@ -315,14 +315,14 @@ public class CommandHand implements ISubCommand {
 
 		InfoType() {
 
-			infoMap.put(name().toLowerCase(), this);
+			infoMap.put(name().toLowerCase(java.util.Locale.ENGLISH), this);
 		}
 
 		InfoType(String... alts) {
 
 			this();
 			for (String alt : alts) {
-				infoMap.put(alt.toLowerCase(), this);
+				infoMap.put(alt.toLowerCase(java.util.Locale.ENGLISH), this);
 			}
 		}
 

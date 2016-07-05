@@ -22,7 +22,7 @@ public abstract class Colour implements Copyable<Colour> {
 			while (s.length() < 6) {
 				s = "0" + s;
 			}
-			return "0x" + s.toUpperCase();
+			return "0x" + s.toUpperCase(java.util.Locale.ENGLISH);
 		}
 
 		private final Pattern patternRGB = Pattern.compile("(\\d+),(\\d+),(\\d+)");
@@ -78,7 +78,7 @@ public abstract class Colour implements Copyable<Colour> {
 	@Override
 	public String toString() {
 
-		return getClass().getSimpleName() + "[0x" + Integer.toHexString(pack()).toUpperCase() + "]";
+		return getClass().getSimpleName() + "[0x" + Integer.toHexString(pack()).toUpperCase(java.util.Locale.ENGLISH) + "]";
 	}
 
 	public Colour add(Colour colour2) {
