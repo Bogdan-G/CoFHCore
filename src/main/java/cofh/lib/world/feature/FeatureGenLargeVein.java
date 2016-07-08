@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import org.bogdang.modifications.random.XSTR;
 
 public class FeatureGenLargeVein extends FeatureBase {
 
@@ -46,7 +47,7 @@ public class FeatureGenLargeVein extends FeatureBase {
 		int blockY = minY;
 		int blockZ = chunkZ * 16;
 
-		Random dRand = new Random(world.getSeed());
+		Random dRand = new XSTR(world.getSeed());
 		long l = (dRand.nextLong() / 2L) * 2L + 1L;
 		long l1 = (dRand.nextLong() / 2L) * 2L + 1L;
 		dRand.setSeed(chunkX * l + chunkZ * l1 ^ world.getSeed());

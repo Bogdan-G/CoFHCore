@@ -24,6 +24,8 @@ import net.minecraft.world.chunk.NibbleArray;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class WorldGenMassiveTree extends WorldGenerator {
 
 	/**
@@ -33,7 +35,7 @@ public class WorldGenMassiveTree extends WorldGenerator {
 	private static final float PI = (float) Math.PI;
 
 	/* Running variables */
-	private Random rand = new Random();
+	private Random rand = new XSTR();
 
 	private World worldObj;
 	/** Contains a list of a points at which to generate groups of leaves. */

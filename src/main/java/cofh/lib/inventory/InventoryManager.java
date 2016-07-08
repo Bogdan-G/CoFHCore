@@ -6,6 +6,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class InventoryManager {
 
+	private InventoryManager() {}
+
 	public static IInventoryManager create(Object inventory, ForgeDirection targetSide) {
 
 		if (inventory instanceof ISidedInventory) {

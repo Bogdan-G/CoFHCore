@@ -16,6 +16,8 @@ import java.util.Random;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class TickHandlerWorld {
 
 	public static TickHandlerWorld instance = new TickHandlerWorld();
@@ -49,7 +51,7 @@ public class TickHandlerWorld {
 				}
 				retroC &= 31;
 				long worldSeed = world.getSeed();
-				Random rand = new Random(worldSeed);
+				Random rand = new XSTR(worldSeed);
 				long xSeed = rand.nextLong() >> 2 + 1L;
 				long zSeed = rand.nextLong() >> 2 + 1L;
 				rand.setSeed(xSeed * c.chunkX + zSeed * c.chunkZ ^ worldSeed);

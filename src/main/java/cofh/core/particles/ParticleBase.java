@@ -11,13 +11,14 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import org.bogdang.modifications.random.XSTR;
 
 public abstract class ParticleBase {
 	public final static float BASE_GRAVITY = 0.04F;
 	protected static final ResourceLocation MC_PARTICLES = new ResourceLocation("textures/particle/particles.png");
 	protected static final ResourceLocation MC_BLOCKS = TextureMap.locationBlocksTexture;
 	protected static final ResourceLocation MC_ITEMS = TextureMap.locationItemsTexture;
-	public static final Random rand = new Random();
+	public static final Random rand = new XSTR();
 	public static double interpPosX;
 	public static double interpPosY;
 	public static double interpPosZ;
