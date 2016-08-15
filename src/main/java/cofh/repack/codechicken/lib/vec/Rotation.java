@@ -252,7 +252,7 @@ public class Rotation extends Transformation {
 		if (angle == 0) {
 			axis = new Vector3(0, 1, 0);
 		} else {
-			double sa = Math.sin(angle * 0.5);
+			double sa = org.bogdang.modifications.math.MathHelperLite.sin(angle * 0.5);
 			axis = new Vector3(quat.x / sa, quat.y / sa, quat.z / sa);
 		}
 	}

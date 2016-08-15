@@ -49,10 +49,10 @@ public class WorldGenStalagmite extends WorldGenerator {
 				return height;
 			}
 			if (!altSinc) {
-				return (int) Math.round(height * (fat ? Math.sin(r) / r : Math.sin(r = r * pi) / r));
+				return (int) Math.round(height * (fat ? org.bogdang.modifications.math.MathHelperLite.sin(r) / r : org.bogdang.modifications.math.MathHelperLite.sin(r = r * pi) / r));
 			}
-			double sinc = (Math.sin(r) / r);
-			return (int) Math.round(height * (sinc * 2 + (Math.sin(r = r * (pi * 4)) / r)) / 2 + rand.nextGaussian() * .75);
+			double sinc = (org.bogdang.modifications.math.MathHelperLite.sin(r) / r);
+			return (int) Math.round(height * (sinc * 2 + (org.bogdang.modifications.math.MathHelperLite.sin(r = r * (pi * 4)) / r)) / 2 + rand.nextGaussian() * .75);
 		} else {
 			int absx = x < 0 ? -x : x, absz = (z < 0 ? -z : z);
 			int dist = fat ? (absx < absz ? absz + absx / 2 : absx + absz / 2) : absx + absz;

@@ -89,8 +89,8 @@ public class Matrix4 extends Transformation implements Copyable<Matrix4> {
 
 	public Matrix4 rotate(double angle, Vector3 axis) {
 
-		double c = Math.cos(angle);
-		double s = Math.sin(angle);
+		double c = org.bogdang.modifications.math.MathHelperLite.cos(angle);
+		double s = org.bogdang.modifications.math.MathHelperLite.sin(angle);
 		double mc = 1.0f - c;
 		double xy = axis.x * axis.y;
 		double yz = axis.y * axis.z;

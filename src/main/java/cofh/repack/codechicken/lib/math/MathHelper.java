@@ -11,7 +11,7 @@ public class MathHelper {
 	public static double[] SIN_TABLE = new double[65536];
 	static {
 		for (int i = 0; i < 65536; ++i) {
-			SIN_TABLE[i] = Math.sin(i / 65536D * 2 * Math.PI);
+			SIN_TABLE[i] = org.bogdang.modifications.math.MathHelperLite.sin(i / 65536D * 2 * Math.PI);
 		}
 
 		SIN_TABLE[0] = 0;
