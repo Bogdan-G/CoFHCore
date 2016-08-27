@@ -1,0 +1,179 @@
+Bogdan-G:
+sub-mods crash game in load (NCDFE, CNFE, IAE) - http://paste.ubuntu.com/23073926/
+if the sub-mods no, worked properly; i did not fix changes to make it work
+it is the way of the test :/
+
+Author:   
+Committer:   
+Parent: 2e705681149f4c51f4e2c3fc931d68a26ba9a909 (push origin repo in fork repo, small replace cos/sin)
+Branch: 
+Follows: 
+Precedes: 
+
+    Local uncommitted changes, not checked in to index
+
+--------------- src/main/java/cofh/core/render/RenderUtils.java ---------------
+index 4c064f8..c246155 100644
+@@ -174,6 +174,7 @@ public class RenderUtils {
+ 
+ 		GL11.glDisable(GL11.GL_CULL_FACE);
+ 		Tessellator tessellator = Tessellator.instance;
++		GL11.glPushMatrix();
+ 		tessellator.startDrawingQuads();
+ 		tessellator.setNormal(0, 0, 1);
+ 		if (type.equals(ItemRenderType.INVENTORY)) {
+@@ -214,6 +215,7 @@ public class RenderUtils {
+ 			preRenderIconWorld(subIcon, -0.0635);
+ 		}
+ 		tessellator.draw();
++		GL11.glPopMatrix();
+ 
+ 		GL11.glDisable(GL11.GL_BLEND);
+ 		GL11.glDepthMask(true);
+@@ -409,6 +411,7 @@ public class RenderUtils {
+ 	public static void renderGlint(float x, float y, int u, int v) {
+ 
+ 		Tessellator tessellator = RenderHelper.tessellator();
++		GL11.glPushMatrix();
+ 		float uScale = 1 / 256f;
+ 		float vScale = 1 / 256f;
+ 		float s = 4.0F; // skew
+@@ -417,14 +420,17 @@ public class RenderUtils {
+ 			float uOffset = Minecraft.getSystemTime() % (3000 + i * 1873) / (3000F + i * 1873) * 256F;
+ 			float vOffset = 0.0F;
+ 
++			GL11.glPushMatrix();
+ 			tessellator.startDrawingQuads();
+ 			tessellator.addVertexWithUV(x + 0, y + v, renderItem.zLevel, (uOffset + 0 + v * s) * uScale, (vOffset + v) * vScale);
+ 			tessellator.addVertexWithUV(x + u, y + v, renderItem.zLevel, (uOffset + u + v * s) * uScale, (vOffset + v) * vScale);
+ 			tessellator.addVertexWithUV(x + u, y + 0, renderItem.zLevel, (uOffset + u + 0 * 0) * uScale, (vOffset + 0) * vScale);
+ 			tessellator.addVertexWithUV(x + 0, y + 0, renderItem.zLevel, (uOffset + 0 + 0 * 0) * uScale, (vOffset + 0) * vScale);
+ 			tessellator.draw();
++			GL11.glPopMatrix();
+ 			s = -1.0F;
+ 		}
++		GL11.glPopMatrix();
+ 	}
+ 
+ 	public static final void renderItemOnBlockSide(TileEntity tile, ItemStack stack, int side, double x, double y, double z) {
+
+------ src/main/java/cofh/core/render/customcharrendering/RenderIcon.java ------
+index d3fd2dd..de18ef0 100644
+@@ -29,6 +29,7 @@ public class RenderIcon implements ICustomCharRenderer {
+ 			return 0;
+ 		}
+ 
++		GL11.glPushMatrix();
+ 		GL11.glColor4f(1, 1, 1, 1);
+ 		fontRenderer.bindTexture(textureSheet);
+ 
+@@ -52,6 +53,7 @@ public class RenderIcon implements ICustomCharRenderer {
+ 		GL11.glEnd();
+ 
+ 		fontRenderer.resetColor();
++		GL11.glPopMatrix();
+ 
+ 		return rw;
+ 	}
+
+----- src/main/java/cofh/core/render/customcharrendering/RenderSprite.java -----
+index 324c37d..4ea70c0 100644
+@@ -31,6 +31,7 @@ public class RenderSprite implements ICustomCharRenderer {
+ 	@Override
+ 	public float renderChar(char letter, boolean italicFlag, float x, float y, CoFHFontRenderer fontRenderer) {
+ 
++		GL11.glPushMatrix();
+ 		GL11.glColor4f(1, 1, 1, 1);
+ 		fontRenderer.bindTexture(textureSheet);
+ 
+@@ -47,6 +48,7 @@ public class RenderSprite implements ICustomCharRenderer {
+ 		GL11.glEnd();
+ 
+ 		fontRenderer.resetColor();
++		GL11.glPopMatrix();
+ 
+ 		return rw;
+ 	}
+
+----------- src/main/java/cofh/core/render/hitbox/RenderHitbox.java -----------
+index 0466f94..278ca0f 100644
+@@ -21,6 +21,7 @@ public class RenderHitbox {
+ 	public static void drawSelectionBox(EntityPlayer thePlayer, MovingObjectPosition mop, float pTickTime, CustomHitBox customHitBox) {
+ 
+ 		if (mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
++			GL11.glPushMatrix();
+ 			GL11.glEnable(GL11.GL_BLEND);
+ 			OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+ 			GL11.glColor4f(0.0F, 0.0F, 0.0F, 0.4F);
+@@ -40,6 +41,7 @@ public class RenderHitbox {
+ 			GL11.glDepthMask(true);
+ 			GL11.glEnable(GL11.GL_TEXTURE_2D);
+ 			GL11.glDisable(GL11.GL_BLEND);
++			GL11.glPopMatrix();
+ 		}
+ 	}
+ 
+
+--------------- src/main/java/cofh/lib/render/RenderHelper.java ---------------
+index 84b5689..b10a71a 100644
+@@ -73,6 +73,7 @@ public final class RenderHelper {
+ 		if (texture == null) {
+ 			return;
+ 		}
++		GL11.glPushMatrix();
+ 		renderer.setRenderBoundsFromBlock(block);
+ 		GL11.glTranslated(translateX, translateY, translateZ);
+ 		tessellator.startDrawingQuads();
+@@ -96,6 +97,7 @@ public final class RenderHelper {
+ 		renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, texture);
+ 
+ 		tessellator.draw();
++		GL11.glPopMatrix();
+ 	}
+ 
+ 	public static void renderBlockFace(RenderBlocks renderer, IIcon texture, int face, double translateX, double translateY, double translateZ) {
+@@ -106,6 +108,7 @@ public final class RenderHelper {
+ 		if (texture == null || face < 0 || face > 5) {
+ 			return;
+ 		}
++		GL11.glPushMatrix();
+ 		renderer.setRenderBoundsFromBlock(block);
+ 		GL11.glTranslated(translateX, translateY, translateZ);
+ 		tessellator.startDrawingQuads();
+@@ -137,6 +140,7 @@ public final class RenderHelper {
+ 			break;
+ 		}
+ 		tessellator.draw();
++		GL11.glPopMatrix();
+ 	}
+ 
+ 	public static void renderItemIn2D(IIcon icon) {
+@@ -147,23 +151,27 @@ public final class RenderHelper {
+ 
+ 	public static void renderIcon(IIcon icon, double z) {
+ 
++		GL11.glPushMatrix();
+ 		Tessellator.instance.startDrawingQuads();
+ 		Tessellator.instance.addVertexWithUV(0, 16, z, icon.getMinU(), icon.getMaxV());
+ 		Tessellator.instance.addVertexWithUV(16, 16, z, icon.getMaxU(), icon.getMaxV());
+ 		Tessellator.instance.addVertexWithUV(16, 0, z, icon.getMaxU(), icon.getMinV());
+ 		Tessellator.instance.addVertexWithUV(0, 0, z, icon.getMinU(), icon.getMinV());
+ 		Tessellator.instance.draw();
++		GL11.glPopMatrix();
+ 	}
+ 
+ 	public static void renderIcon(double x, double y, double z, IIcon icon, int width, int height) {
+ 
+ 		Tessellator tessellator = Tessellator.instance;
++		GL11.glPushMatrix();
+ 		tessellator.startDrawingQuads();
+ 		tessellator.addVertexWithUV(x, y + height, z, icon.getMinU(), icon.getMaxV());
+ 		tessellator.addVertexWithUV(x + width, y + height, z, icon.getMaxU(), icon.getMaxV());
+ 		tessellator.addVertexWithUV(x + width, y, z, icon.getMaxU(), icon.getMinV());
+ 		tessellator.addVertexWithUV(x, y, z, icon.getMinU(), icon.getMinV());
+ 		tessellator.draw();
++		GL11.glPopMatrix();
+ 	}
+ 
+ 	public static final IIcon getFluidTexture(Fluid fluid) {
+
