@@ -49,6 +49,13 @@ processResources
     }
 }
 
+jar {
+    manifest {
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+        attributes 'FMLCorePlugin': 'cofh.asm.LoadingPlugin'
+    }
+}
+
 task sourceJar(type: Jar) {
     from sourceSets.main.allSource
     classifier = 'sources'

@@ -44,35 +44,35 @@ public final class UpdateManager {
 
 	public static void registerUpdater(UpdateManager manager) {
 
-		FMLCommonHandler.instance().bus().register(manager);
+		//FMLCommonHandler.instance().bus().register(manager);//off
 	}
 
-	private boolean _notificationDisplayed;
-	private final IUpdatableMod _mod;
-	private final UpdateCheckThread _updateThread;
-	private final String _downloadUrl;
+	private boolean _notificationDisplayed = false;
+	private IUpdatableMod _mod = null;
+	private UpdateCheckThread _updateThread = null;
+	private String _downloadUrl = null;
 	private int lastPoll = 400;
 
 	public UpdateManager(IUpdatableMod mod) {
 
-		this(mod, null);
+		//this(mod, null);
 	}
 
 	public UpdateManager(IUpdatableMod mod, String releaseUrl) {
 
-		this(mod, releaseUrl, null);
+		//this(mod, releaseUrl, null);
 	}
 
 	public UpdateManager(IUpdatableMod mod, String releaseUrl, String downloadUrl) {
 
-		_mod = mod;
-		_updateThread = new UpdateCheckThread(mod, releaseUrl, downloadUrl);
-		_updateThread.start();
-		_downloadUrl = downloadUrl;
-		lastPoll += (pollOffset += 140);
+		//_mod = mod;
+		//_updateThread = new UpdateCheckThread(mod, releaseUrl, downloadUrl);
+		//_updateThread.start();
+		//_downloadUrl = downloadUrl;
+		//lastPoll += (pollOffset += 140);
 	}
 
-	@SubscribeEvent
+	//@//SubscribeEvent//off event
 	public void tickStart(PlayerTickEvent evt) {
 
 		if (evt.phase != Phase.START) {

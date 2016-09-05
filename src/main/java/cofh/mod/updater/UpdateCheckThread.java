@@ -14,39 +14,39 @@ import org.apache.logging.log4j.spi.AbstractLogger;
 
 public class UpdateCheckThread extends Thread {
 
-	private final String _releaseUrl, _downloadUrl;
-	private final IUpdatableMod _mod;
+	private final String _releaseUrl = null, _downloadUrl = null;
+	private final IUpdatableMod _mod = null;
 
 	private boolean _checkComplete = false;
 	private boolean _newVerAvailable = false;
 	private boolean _criticalUpdate = false;
-	private ModVersion _newVer;
+	private ModVersion _newVer = null;
 
 	public UpdateCheckThread(IUpdatableMod mod) {
 
-		this(mod, null);
+		//this(mod, null);
 	}
 
 	public UpdateCheckThread(IUpdatableMod mod, String releaseUrl) {
 
-		this(mod, null, null);
+		//this(mod, null, null);
 	}
 
 	public UpdateCheckThread(IUpdatableMod mod, String releaseUrl, String downloadUrl) {
 
-		super("CoFHUpdater:" + mod.getModId());
+		/*super("CoFHUpdater:" + mod.getModId());
 		_mod = mod;
 		if (releaseUrl == null) {
 			releaseUrl = "https://raw.github.com/skyboy/" + mod.getModId() + "/master/VERSION";
 		}
 		_releaseUrl = releaseUrl;
-		_downloadUrl = downloadUrl;
+		_downloadUrl = downloadUrl;*/
 	}
 
 	@Override
 	public void run() {
 
-		l: try {
+		/*l: try {
 			String id = _mod.getModName();
 			ModVersion ourVer = ModVersion.parse(id, _mod.getModVersion());
 
@@ -104,12 +104,12 @@ public class UpdateCheckThread extends Thread {
 			}
 			_mod.getLogger().log(level, AbstractLogger.CATCHING_MARKER, "Update check for " + _mod.getModName() + " failed.", e);
 		}
-		_checkComplete = true;
+		_checkComplete = true;*/
 	}
 
 	public boolean checkComplete() {
 
-		return _checkComplete;
+		return true;//_checkComplete;
 	}
 
 	public boolean isCriticalUpdate() {
