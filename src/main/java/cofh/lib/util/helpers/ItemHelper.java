@@ -1141,16 +1141,16 @@ public final class ItemHelper {
 
 		ArrayList<ItemStack> containedItems = new ArrayList<ItemStack>();
 
-		boolean[] visited = new boolean[nbtList.tagCount()];
+		java.util.BitSet visited = new java.util.BitSet(nbtList.tagCount());
 
 		for (int i = 0; i < nbtList.tagCount(); i++) {
 			NBTTagCompound tag = nbtList.getCompoundTagAt(i);
 			int slot = tag.getInteger("Slot");
 
-			if (visited[i] || slot < minSlot || slot > maxSlot) {
+			if (visited.get(i) || slot < minSlot || slot > maxSlot) {
 				continue;
 			}
-			visited[i] = true;
+			visited.set(i);
 			curStack = ItemStack.loadItemStackFromNBT(tag);
 
 			if (curStack == null) {
@@ -1161,7 +1161,7 @@ public final class ItemHelper {
 				NBTTagCompound tag2 = nbtList.getCompoundTagAt(j);
 				int slot2 = tag.getInteger("Slot");
 
-				if (visited[j] || slot2 < minSlot || slot2 > maxSlot) {
+				if (visited.get(j) || slot2 < minSlot || slot2 > maxSlot) {
 					continue;
 				}
 				curStack2 = ItemStack.loadItemStackFromNBT(tag2);
@@ -1171,7 +1171,7 @@ public final class ItemHelper {
 				}
 				if (itemsIdentical(curStack, curStack2)) {
 					curStack.stackSize += curStack2.stackSize;
-					visited[j] = true;
+					visited.set(j);
 				}
 			}
 		}
@@ -1202,7 +1202,7 @@ public final class ItemHelper {
 
 		ArrayList<ItemStack> containedItems = new ArrayList<ItemStack>();
 
-		boolean[] visited = new boolean[invSize];
+		java.util.BitSet visited = new java.util.BitSet(invSize);
 
 		NBTTagCompound tag = stack.stackTagCompound;
 		if (tag.hasKey("Inventory")) {
@@ -1210,21 +1210,21 @@ public final class ItemHelper {
 		}
 
 		for (int i = minSlot; i < Math.min(invSize, maxSlot); i++) {
-			if (visited[i]) {
+			if (visited.get(i)) {
 				continue;
 			}
 			if (!tag.hasKey("Slot" + i)) {
 				continue;
 			}
 			curStack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Slot" + i));
-			visited[i] = true;
+			visited.set(i);
 
 			if (curStack == null) {
 				continue;
 			}
 			containedItems.add(curStack);
 			for (int j = minSlot; j < Math.min(invSize, maxSlot); j++) {
-				if (visited[j]) {
+				if (visited.get(j)) {
 					continue;
 				}
 				if (!tag.hasKey("Slot" + j)) {
@@ -1237,7 +1237,7 @@ public final class ItemHelper {
 				}
 				if (itemsIdentical(curStack, curStack2)) {
 					curStack.stackSize += curStack2.stackSize;
-					visited[j] = true;
+					visited.set(j);
 				}
 			}
 		}

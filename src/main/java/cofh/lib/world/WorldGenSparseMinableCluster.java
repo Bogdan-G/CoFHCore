@@ -93,7 +93,7 @@ public class WorldGenSparseMinableCluster extends WorldGenerator {
 			float zCenter = zMin + (zMax * i) / blocks;
 
 			// preserved as nextDouble to ensure the rand gets ticked the same amount
-			float size = ((float) rand.nextDouble() * blocks) / 16f;
+			float size = ((float) rand.nextFloat() * blocks) / 16f;
 
 			float hMod = ((MathHelper.sin((i * (float) Math.PI) / blocks) + 1f) * size + 1f) * .5f;
 			float vMod = ((MathHelper.sin((i * (float) Math.PI) / blocks) + 1f) * size + 1f) * .5f;
