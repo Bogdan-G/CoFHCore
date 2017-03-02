@@ -28,7 +28,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemBase extends Item {
 
-	public static class ItemEntry {
+	public static class ItemEntry implements java.io.Serializable {
 
 		public String name;
 		public IIcon icon;
