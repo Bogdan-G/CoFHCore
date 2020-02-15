@@ -234,6 +234,18 @@ public class CoFHCore extends BaseMod {
 		comment = "Set to FALSE to disable items on the ground from trying to stack. This can improve server performance.";
 		CoFHProps.enableItemStacking = configCore.get(category, "EnableItemStacking", true, comment);
 
+		comment = "Set this >-1 to reduce get entity collision boxes. External cycle.";
+		CoFHProps.entityCollision0 = configCore.get(category, "EntityCollision0", -1, comment);
+		
+		comment = "Set this TRUE to enable EntityCollision0 logging. External cycle.";
+		CoFHProps.enableentityCollision0logging = configCore.get(category, "EntityCollision0", false, comment);
+
+		comment = "Set this >-1 to reduce get entity collision boxes. Internal cycle.";
+		CoFHProps.entityCollision1 = configCore.get(category, "EntityCollision1", -1, comment);
+
+		comment = "Set this TRUE to enable EntityCollision1 logging. Internal cycle.";
+		CoFHProps.enableentityCollision1logging = configCore.get(category, "EntityCollision1", false, comment);
+
 		/* HOLIDAY */
 		category = "Holiday";
 

@@ -89,6 +89,12 @@ public class CoFHProps {
 
 	public static boolean enableColorBlindTextures = false;
 	public static boolean enableGUISlotBorders = true;
+	
+	public static int entityCollision0 = -1;
+	public static int entityCollision1 = -1;
+	
+	public static boolean enableentityCollision0logging = false;
+	public static boolean enableentityCollision1logging = false;
 
 	/* Holidays */
 	public static boolean holidayAprilFools = true;

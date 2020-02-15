@@ -63,7 +63,7 @@ public class CoreUtils {
 
 	public static boolean isFakePlayer(EntityPlayer player) {
 
-		return false;//return (player instanceof FakePlayer);//FB: instanceof will always return false
+		return (player instanceof FakePlayer);
 	}
 
 	public static boolean isOp(EntityPlayer player) {

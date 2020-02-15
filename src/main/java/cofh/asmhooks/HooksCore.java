@@ -93,10 +93,19 @@ public class HooksCore {
 			int l = MathHelper.floor(bb.maxY + 1.0D);
 			int i1 = MathHelper.floor(bb.minZ);
 			int j1 = MathHelper.floor(bb.maxZ + 1.0D);
+			int count = 0, count0 = 0;
 
 			for (int x = i; x < j; ++x) {
+				if (CoFHProps.entityCollision0 != -1 && count0>=CoFHProps.entityCollision0) {
+				if (CoFHProps.enableentityCollision0logging) cpw.mods.fml.common.FMLLog.warning("CoFHCore HooksCore getEntityCollisionBoxes count0>=%s", CoFHProps.entityCollision0);
+				count=0;break;}
+				count0++;
 				boolean xBound = x >= -30000000 & x < 30000000;
 				for (int z = i1; z < j1; ++z) {
+					if (CoFHProps.entityCollision1 != -1 && count>=CoFHProps.entityCollision1) {
+					if (CoFHProps.enableentityCollision1logging) cpw.mods.fml.common.FMLLog.warning("CoFHCore HooksCore getEntityCollisionBoxes count>=%s %s, %s, %s, %s, %s, %s", CoFHProps.entityCollision1, i, j, k, l, i1, j1);
+					count=0;break;}
+					count++;
 					boolean def = xBound & z >= -30000000 & z < 30000000;
 					if (!world.blockExists(x, 64, z)) {
 						continue;
